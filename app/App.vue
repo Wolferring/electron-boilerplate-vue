@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <img class="logo" src="./assets/logo.png">
+<<<<<<< HEAD
     <weather></weather>
+=======
+    <hello></hello>
+>>>>>>> 87afc09847431644cb86a5a14c52a0faa5007b4f
     <p>
       Welcome to your Electron + Vue.js app. To get started, take a look at the
       <a href="https://github.com/vuejs-templates/webpack#folder-structure" target="_blank">README</a>
@@ -25,7 +29,7 @@
 
   export default {
     components: {
-      weather:weather
+      weather: weather
     }
   }
 </script>
