@@ -1,0 +1,2 @@
+export const WEATHER_CONFIG = 'WEATHER_CONFIG'
+
