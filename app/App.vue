@@ -1,19 +1,20 @@
 <template>
   <div class="wrap">
-    <div class="row">
+    <div class="row row-header">
       <weather>
         
       </weather>
       <clock>
-        
+          
       </clock>
+
     </div>
     <div class="row">
       <custom-canvas>
         
       </custom-canvas>
     </div>
-    <div class="row">    
+    <div class="row row-footer">    
       <rss>
         
       </rss>
@@ -26,7 +27,13 @@
   import clock from './components/clock'
   import rss from './components/rss'
   import canvas from './components/canvas'
+  import * as io from 'socket.io-client'
   export default {
+    data(){
+      return {
+        httpServer: null
+      }
+    },
     components: {
       weather: weather,
       clock: clock,
@@ -34,7 +41,31 @@
       customCanvas: canvas
     },
     created:function(){
+      var self =this
+      this.httpServer = io.connect('http://localhost:3000');
+      this.httpServer.on('error',function(e){
+        console.log(e)
+      })
+      this.httpServer.on('connect', function(event) {
+        self.httpServer.emit('online',{
+          id:"C0eP3"
+        })
+      }); 
+      this.httpServer.on('weather',function(data){
+        self.$store.dispatch('weather',data)
+      })
+      this.httpServer.on('rss',function(data){
+        self.$store.dispatch('rss',data)
+      }) 
+      this.httpServer.on('todos', function(todo) {
+        self.$store.dispatch('todos',todo)
+      });
+      this.httpServer.on('error', function(event) {
 
+      }); 
+      this.httpServer.on('connect', function(event) {
+
+      });              
     }
   }
 </script>

@@ -37,14 +37,14 @@
     // position: fixed;
     // left: 0;
     // top:0;
-    
+    text-shadow:2px 2px 0px #000000;
     width: 30vw;
     max-width: 300px;
     padding: .5rem;
 
     .weather-icon{
       font-weight: bold;
-      padding: 1rem 0;
+      padding: .5rem 0;
       .icon{
         margin-top: -2rem;
       }
@@ -113,7 +113,7 @@
   		}
   	},
     mounted:function(){
-      this.$store.dispatch('getWeatherConfig',"1")
+      // this.$store.dispatch('getWeatherConfig',"1")
     },
   	computed:{
   		weather:function(){

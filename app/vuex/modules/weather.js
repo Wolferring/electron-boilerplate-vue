@@ -2,7 +2,7 @@ import api from '../api.js'
 import * as types from '../types.js'
 
 const state = {
-	weather:null
+	weather:Object
 }
 
 const actions = {
@@ -11,6 +11,9 @@ const actions = {
             commit(types.WEATHER_CONFIG,res);
         })
     },
+    weather:function({commit},data){
+        commit(types.WEATHER_CONFIG,data)
+    }
 }
 const getters = {
     getWeatherConfig: state => state.weather,

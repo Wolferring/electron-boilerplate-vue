@@ -16,34 +16,25 @@
 	export default{
 		data(){
 			return {
-				list:[
-					{
-						'id':1,
-						'title':'RSS-1'
-					},
-					{
-						'id':2,
-						'title':'RSS-2'
-					},
-					{
-						'id':3,
-						'title':'RSS-3'
-					}										
-				],
 				current:0
 			}
 		},
 		computed:{
+			list:function(){
+				return this.$store.getters.getRSSList
+			},
 			currentId:function(){
 				return this.list[this.current].id
+			},
+			len:function(){
+				return this.list.length-1
 			}
 		},
 		created:function(){
 			var self = this;
-			var len = this.list.length-1;
 			setInterval(function(){
-				self.current = self.current>=len?0:(self.current+1)
-			},4000)
+				self.current = self.current>=self.len?0:(self.current+1)
+			},6000)
 		}
 	}
 </script>
@@ -64,8 +55,12 @@
   .slide-fade-enter-active, .slide-fade-leave-active {
     transition: all .5s
   }
-  .slide-fade-enter, .slide-fade-leave-active {
+  .slide-fade-enter{
     opacity: 0;
     transform:translateY(20px)
   } 
+  .slide-fade-leave-active {
+  	opacity: 0;
+  	transform:translateY(-20px)
+  }
 </style>

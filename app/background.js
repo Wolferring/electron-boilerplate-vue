@@ -11,8 +11,10 @@ let mainWindow
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
     width: 1024,
-    height: 768
+    height: 768,
+    autoHideMenuBar:true
   })
+  mainWindow.setFullScreen(true);
 
   // Load the HTML file directly from the webpack dev server if
   // hot reload is enabled, otherwise load the local file.
