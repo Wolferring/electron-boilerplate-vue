@@ -1,7 +1,10 @@
 <template>
 <div id="canvas">
+	<div class="title">
+		<h3>{{info.title}}</h3>
+	</div>
 	<div class="image">
-		<img src="../assets/images/20170508110450.jpg" alt="">
+		<img :src="info.image" v-if="info.image" alt="">
 	</div>
 </div>
 </template>
@@ -9,11 +12,13 @@
 	export default{
 		data(){
 			return {
-				image:"../assets/images/20170508110450.jpg"
+				
 			}
 		},
 		computed:{
-
+			info:function(){
+				return this.$store.getters.getCanvas
+			}
 		}
 	}
 </script>
@@ -23,10 +28,20 @@
 		flex-grow:1; 
 		text-align: center;
 	    display: flex;
-	    justify-content:center;		
+	    justify-content:center;	
+	    flex-direction:column;
 		.image{
 			align-self:center;
 			max-width: 70%;
+			max-height: 80vh;
+			img{
+				max-height: 80vh;
+			}
+		}
+		.title{
+			display: inline-block;
+			max-width: 70%;
+			align-self:center;
 		}
 	}
 </style>
